@@ -22,10 +22,13 @@ angular.module('starter', ['ionic'])
   $scope.won = false;
   $scope.winCount = 0;
   $scope.win = function() {
+    if ($scope.won == true) {
+      return;
+    }
     $scope.won = true;
     $scope.winCount++;
     $timeout(function() {
       $scope.won = false;
-    }, 3000)
+    }, 1000)
   }
 })
