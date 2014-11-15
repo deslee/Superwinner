@@ -20,13 +20,15 @@ angular.module('starter', ['ionic'])
 
 .controller('winnerController', function($scope, $timeout) {
   $scope.won = false;
-  $scope.winCount = 0;
+  var wc = localStorage.getItem('winCount');
+  $scope.winCount = wc ? wc : 0;
   $scope.win = function() {
     if ($scope.won == true) {
       return;
     }
     $scope.won = true;
     $scope.winCount++;
+    localStorage.setItem('winCount', $scope.winCount);
     $timeout(function() {
       $scope.won = false;
     }, 1000)
